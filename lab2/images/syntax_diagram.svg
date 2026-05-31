@@ -1,0 +1,130 @@
+<svg xmlns='http://www.w3.org/2000/svg' style='font-size:16px;font-family:sans-serif;' viewBox="0 0 1008.72 345.6" data-pikchr-date="20250305105416-x4">
+<style>
+:root {
+    --fgcolor: rgb(46,51,56);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fgcolor: #dcddde;
+    }
+}
+</style>
+<circle cx="7.56" cy="17.28" r="5.4" style="fill:var(--fgcolor);stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="50.76,17.28 39.24,21.6 39.24,12.96" style="fill:var(--fgcolor)"/>
+<path d="M7.56,17.28L45,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M1001.16,26.28L1006.56,26.28L1006.56,8.28L1001.16,8.28Z"  style="fill:var(--fgcolor);stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="1001.16,17.28 989.64,21.6 989.64,12.96" style="fill:var(--fgcolor)"/>
+<path d="M957.96,17.28L995.4,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="108.36,17.28 96.84,21.6 96.84,12.96" style="fill:var(--fgcolor)"/>
+<path d="M50.76,17.28L102.6,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M123.48,32.4L200.722,32.4A15.12 15.12 0 0 0 215.842 17.28A15.12 15.12 0 0 0 200.722 2.16L123.48,2.16A15.12 15.12 0 0 0 108.36 17.28A15.12 15.12 0 0 0 123.48 32.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="162.101" y="17.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> BONJOUR </text>
+<path d="M215.842,17.28 L 230.242,17.28 Q 244.642,17.28 244.642,35.28 Q 244.642,53.28 259.042,53.28 L 273.442,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="957.96,17.28 946.44,21.6 946.44,12.96" style="fill:var(--fgcolor)"/>
+<path d="M215.842,17.28 L 907.56,17.28 Q 929.16,17.28 929.16,17.28 L 929.16,17.28 Q 929.16,17.28 940.68,17.28 L 952.2,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M50.76,17.28 L 65.16,17.28 Q 79.56,17.28 79.56,35.28 Q 79.56,53.28 101.16,53.28 L 251.842,53.28 L 273.442,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="331.042,53.28 319.522,57.6 319.522,48.96" style="fill:var(--fgcolor)"/>
+<path d="M273.442,53.28L325.282,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M346.162,68.4L387.691,68.4A15.12 15.12 0 0 0 402.811 53.28A15.12 15.12 0 0 0 387.691 38.16L346.162,38.16A15.12 15.12 0 0 0 331.042 53.28A15.12 15.12 0 0 0 346.162 68.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="366.926" y="53.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> QUEL </text>
+<polygon points="431.611,53.28 420.091,57.6 420.091,48.96" style="fill:var(--fgcolor)"/>
+<path d="M402.811,53.28L425.851,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M446.731,68.4L486.072,68.4A15.12 15.12 0 0 0 501.192 53.28A15.12 15.12 0 0 0 486.072 38.16L446.731,38.16A15.12 15.12 0 0 0 431.611 53.28A15.12 15.12 0 0 0 446.731 68.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="466.402" y="53.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> ETRE </text>
+<polygon points="529.992,53.28 518.472,57.6 518.472,48.96" style="fill:var(--fgcolor)"/>
+<path d="M501.192,53.28L524.232,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M545.112,68.4L559.8,68.4A15.12 15.12 0 0 0 574.92 53.28A15.12 15.12 0 0 0 559.8 38.16L545.112,38.16A15.12 15.12 0 0 0 529.992 53.28A15.12 15.12 0 0 0 545.112 68.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="552.456" y="53.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> LE </text>
+<polygon points="603.72,53.28 592.2,57.6 592.2,48.96" style="fill:var(--fgcolor)"/>
+<path d="M574.92,53.28L597.96,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M618.84,68.4L651.96,68.4A15.12 15.12 0 0 0 667.08 53.28A15.12 15.12 0 0 0 651.96 38.16L618.84,38.16A15.12 15.12 0 0 0 603.72 53.28A15.12 15.12 0 0 0 618.84 68.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="635.4" y="53.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> PRIX </text>
+<polygon points="695.88,53.28 684.36,57.6 684.36,48.96" style="fill:var(--fgcolor)"/>
+<path d="M667.08,53.28L690.12,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M711,68.4L727.992,68.4A15.12 15.12 0 0 0 743.112 53.28A15.12 15.12 0 0 0 727.992 38.16L711,38.16A15.12 15.12 0 0 0 695.88 53.28A15.12 15.12 0 0 0 711 68.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="719.496" y="53.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> DE </text>
+<polygon points="800.712,53.28 789.192,57.6 789.192,48.96" style="fill:var(--fgcolor)"/>
+<path d="M743.112,53.28L794.952,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M800.712,68.4L901.696,68.4L901.696,38.16L800.712,38.16Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="851.204" y="53.28" text-anchor="middle" font-weight="bold" fill="var(--fgcolor)" dominant-baseline="central">command</text>
+<polygon points="957.96,17.28 946.44,21.6 946.44,12.96" style="fill:var(--fgcolor)"/>
+<path d="M901.696,53.28 L 915.428,53.28 Q 929.16,53.28 929.16,35.28 Q 929.16,17.28 940.68,17.28 L 952.2,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="331.042,89.28 319.522,93.6 319.522,84.96" style="fill:var(--fgcolor)"/>
+<path d="M273.442,53.28 L 287.842,53.28 Q 302.242,53.28 302.242,71.28 Q 302.242,89.28 313.762,89.28 L 325.282,89.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M346.162,104.4L425.707,104.4A15.12 15.12 0 0 0 440.827 89.28A15.12 15.12 0 0 0 425.707 74.16L346.162,74.16A15.12 15.12 0 0 0 331.042 89.28A15.12 15.12 0 0 0 346.162 104.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="385.934" y="89.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> COMBIEN </text>
+<polygon points="469.627,89.28 458.107,93.6 458.107,84.96" style="fill:var(--fgcolor)"/>
+<path d="M440.827,89.28L463.867,89.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M484.747,104.4L551.506,104.4A15.12 15.12 0 0 0 566.626 89.28A15.12 15.12 0 0 0 551.506 74.16L484.747,74.16A15.12 15.12 0 0 0 469.627 89.28A15.12 15.12 0 0 0 484.747 104.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="518.126" y="89.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> COUTER </text>
+<polygon points="800.712,53.28 789.192,57.6 789.192,48.96" style="fill:var(--fgcolor)"/>
+<path d="M566.626,89.28 L 750.312,89.28 Q 771.912,89.28 771.912,71.28 Q 771.912,53.28 783.432,53.28 L 794.952,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="331.042,125.28 319.522,129.6 319.522,120.96" style="fill:var(--fgcolor)"/>
+<path d="M273.442,53.28 L 287.842,53.28 Q 302.242,53.28 302.242,74.88 L 302.242,103.68 Q 302.242,125.28 313.762,125.28 L 325.282,125.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M346.162,140.4L356.587,140.4A15.12 15.12 0 0 0 371.707 125.28A15.12 15.12 0 0 0 356.587 110.16L346.162,110.16A15.12 15.12 0 0 0 331.042 125.28A15.12 15.12 0 0 0 346.162 140.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="351.374" y="125.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> JE </text>
+<polygon points="400.507,125.28 388.987,129.6 388.987,120.96" style="fill:var(--fgcolor)"/>
+<path d="M371.707,125.28L394.747,125.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M415.627,140.4L489.067,140.4A15.12 15.12 0 0 0 504.187 125.28A15.12 15.12 0 0 0 489.067 110.16L415.627,110.16A15.12 15.12 0 0 0 400.507 125.28A15.12 15.12 0 0 0 415.627 140.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="452.347" y="125.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> VOULOIR </text>
+<polygon points="561.787,125.28 550.267,129.6 550.267,120.96" style="fill:var(--fgcolor)"/>
+<path d="M504.187,125.28L556.027,125.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M576.907,140.4L691.704,140.4A15.12 15.12 0 0 0 706.824 125.28A15.12 15.12 0 0 0 691.704 110.16L576.907,110.16A15.12 15.12 0 0 0 561.787 125.28A15.12 15.12 0 0 0 576.907 140.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="634.306" y="125.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> COMMANDER </text>
+<polygon points="800.712,53.28 789.192,57.6 789.192,48.96" style="fill:var(--fgcolor)"/>
+<path d="M706.824,125.28 L 750.312,125.28 Q 771.912,125.28 771.912,103.68 L 771.912,74.88 Q 771.912,53.28 783.432,53.28 L 794.952,53.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="561.787,161.28 550.267,165.6 550.267,156.96" style="fill:var(--fgcolor)"/>
+<path d="M504.187,125.28 L 518.587,125.28 Q 532.987,125.28 532.987,143.28 Q 532.987,161.28 544.507,161.28 L 556.027,161.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M576.907,176.4L677.304,176.4A15.12 15.12 0 0 0 692.424 161.28A15.12 15.12 0 0 0 677.304 146.16L576.907,146.16A15.12 15.12 0 0 0 561.787 161.28A15.12 15.12 0 0 0 576.907 176.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="627.106" y="161.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> CONNAITRE </text>
+<polygon points="721.224,161.28 709.704,165.6 709.704,156.96" style="fill:var(--fgcolor)"/>
+<path d="M692.424,161.28L715.464,161.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M736.344,176.4L772.344,176.4A15.12 15.12 0 0 0 787.464 161.28A15.12 15.12 0 0 0 772.344 146.16L736.344,146.16A15.12 15.12 0 0 0 721.224 161.28A15.12 15.12 0 0 0 736.344 176.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="754.344" y="161.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> MON </text>
+<polygon points="816.264,161.28 804.744,165.6 804.744,156.96" style="fill:var(--fgcolor)"/>
+<path d="M787.464,161.28L810.504,161.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M831.384,176.4L883.512,176.4A15.12 15.12 0 0 0 898.632 161.28A15.12 15.12 0 0 0 883.512 146.16L831.384,146.16A15.12 15.12 0 0 0 816.264 161.28A15.12 15.12 0 0 0 831.384 176.4Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="857.448" y="161.28" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> SOLDE </text>
+<polygon points="957.96,17.28 946.44,21.6 946.44,12.96" style="fill:var(--fgcolor)"/>
+<path d="M898.632,161.28 L 913.896,161.28 Q 929.16,161.28 929.16,139.68 L 929.16,38.88 Q 929.16,17.28 940.68,17.28 L 952.2,17.28"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M7.56,220.32L108.544,220.32L108.544,190.08L7.56,190.08Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="58.0522" y="205.2" text-anchor="middle" font-weight="bold" fill="var(--fgcolor)" dominant-baseline="central">command</text>
+<path d="M7.56,220.32L7.56,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<circle cx="7.56" cy="256.32" r="5.4" style="fill:var(--fgcolor);stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="50.76,256.32 39.24,260.64 39.24,252" style="fill:var(--fgcolor)"/>
+<path d="M7.56,256.32L45,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M1001.16,265.32L1006.56,265.32L1006.56,247.32L1001.16,247.32Z"  style="fill:var(--fgcolor);stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="1001.16,256.32 989.64,260.64 989.64,252" style="fill:var(--fgcolor)"/>
+<path d="M957.96,256.32L995.4,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="79.56,256.32 68.04,260.64 68.04,252" style="fill:var(--fgcolor)"/>
+<path d="M50.76,256.32L73.8,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M94.68,271.44L131.026,271.44A15.12 15.12 0 0 0 146.146 256.32A15.12 15.12 0 0 0 131.026 241.2L94.68,241.2A15.12 15.12 0 0 0 79.56 256.32A15.12 15.12 0 0 0 94.68 271.44Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="112.853" y="256.32" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> NUM </text>
+<polygon points="174.946,256.32 163.426,260.64 163.426,252" style="fill:var(--fgcolor)"/>
+<path d="M146.146,256.32L169.186,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M190.066,271.44L262.93,271.44A15.12 15.12 0 0 0 278.05 256.32A15.12 15.12 0 0 0 262.93 241.2L190.066,241.2A15.12 15.12 0 0 0 174.946 256.32A15.12 15.12 0 0 0 190.066 271.44Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="226.498" y="256.32" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> PRODUIT </text>
+<polygon points="957.96,256.32 946.44,260.64 946.44,252" style="fill:var(--fgcolor)"/>
+<path d="M278.05,256.32L952.2,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="335.65,292.32 324.13,296.64 324.13,288" style="fill:var(--fgcolor)"/>
+<path d="M278.05,256.32 L 292.45,256.32 Q 306.85,256.32 306.85,274.32 Q 306.85,292.32 318.37,292.32 L 329.89,292.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M350.77,307.44L422.136,307.44A15.12 15.12 0 0 0 437.256 292.32L437.256,292.32A15.12 15.12 0 0 0 422.136 277.2L350.77,277.2A15.12 15.12 0 0 0 335.65 292.32L335.65,292.32A15.12 15.12 0 0 0 350.77 307.44Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="386.453" y="292.32" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> MARQUE </text>
+<polygon points="494.856,256.32 483.336,260.64 483.336,252" style="fill:var(--fgcolor)"/>
+<path d="M437.256,292.32 L 451.656,292.32 Q 466.056,292.32 466.056,274.32 Q 466.056,256.32 477.576,256.32 L 489.096,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="552.456,292.32 540.936,296.64 540.936,288" style="fill:var(--fgcolor)"/>
+<path d="M494.856,256.32 L 509.256,256.32 Q 523.656,256.32 523.656,274.32 Q 523.656,292.32 535.176,292.32 L 546.696,292.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M567.576,307.44L582.494,307.44A15.12 15.12 0 0 0 597.614 292.32L597.614,292.32A15.12 15.12 0 0 0 582.494 277.2L567.576,277.2A15.12 15.12 0 0 0 552.456 292.32L552.456,292.32A15.12 15.12 0 0 0 567.576 307.44Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="575.035" y="292.32" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> ET </text>
+<path d="M597.614,292.32L655.214,292.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="684.014,292.32 672.494,296.64 672.494,288" style="fill:var(--fgcolor)"/>
+<path d="M655.214,292.32L678.254,292.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M684.014,307.44L784.999,307.44L784.999,277.2L684.014,277.2Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="734.507" y="292.32" text-anchor="middle" font-weight="bold" fill="var(--fgcolor)" dominant-baseline="central">command</text>
+<path d="M784.999,292.32 L 799.399,292.32 Q 813.799,292.32 813.799,274.32 Q 813.799,256.32 828.199,256.32 L 842.599,256.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<polygon points="552.456,328.32 540.936,332.64 540.936,324" style="fill:var(--fgcolor)"/>
+<path d="M494.856,256.32 L 509.256,256.32 Q 523.656,256.32 523.656,277.92 L 523.656,306.72 Q 523.656,328.32 535.176,328.32 L 546.696,328.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<path d="M567.576,343.44L586.066,343.44A15.12 15.12 0 0 0 601.186 328.32A15.12 15.12 0 0 0 586.066 313.2L567.576,313.2A15.12 15.12 0 0 0 552.456 328.32A15.12 15.12 0 0 0 567.576 343.44Z"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+<text x="576.821" y="328.32" text-anchor="middle" fill="var(--fgcolor)" dominant-baseline="central"> OU </text>
+<path d="M601.186,328.32 L 615.586,328.32 Q 629.986,328.32 629.986,310.32 Q 629.986,292.32 644.386,292.32 L 658.786,292.32"  style="fill:none;stroke-width:2.16;stroke:var(--fgcolor);" />
+</svg>

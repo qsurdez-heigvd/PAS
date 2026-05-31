@@ -1,0 +1,12 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ATpew226)
+= Labo Bot-Tender
+
+Ce labo consiste à implémenter un chatbot appelé *Bot-Tender* en Scala, permettant aux clients de commander des produits et de connaître leur solde. Il se décompose en plusieurs phases qui s'étendent chacune sur plusieurs semaines. Chaque phase fait l'objet d'une évaluation séparée. Les instructions et le code de chaque nouvelle phase sont fournis au fur et à mesure via des pull requests.
+
+Les instructions de la première phase se trouvent dans le fichier link:instructions-01-parser.asciidoc[instructions-01-parser.asciidoc]
+
+Les instructions de la deuxième phase se trouvent dans le fichier link:instructions-02-chatroom.asciidoc[instructions-02-chatroom.asciidoc]
+
+Les instructions de la troisième phase se trouvent dans le fichier link:instructions-03-future.asciidoc[instructions-03-future.asciidoc]
+
+// ---- Ne pas modifier au-dessus de cette ligne ----

@@ -1,0 +1,272 @@
+= Labo Bot-Tender Parser
+Nastaran FATEMI <nastaran.fatemi@heig-vd.ch>; Christopher MEIER <christopher.meier@heig-vd.ch>
+:revdate: 25 mars 2026
+:lang: fr
+:toc: auto
+:toc-title: Table des matières
+:course: Programmation Appliquée en Scala (PAS)
+
+== Introduction
+
+Vous allez créer un chatbot appelé Bot-Tender qui permet aux clients de commander des produits et de connaître leur solde.
+
+== Objectifs
+Ce laboratoire est la première partie d'une série de laboratoires. L'objectif de cette partie est de lire des phrases saisies par l'utilisateur en ligne de commande, de les tokeniser, de les parser, puis de réagir en fonction de l'analyse du contenu.
+
+.Exemple d'exécution typique (sans session d'utilisateur)
+[source,text]
+----
+Bienvenue au Chill-Out !
+
+> Bonjour
+Hello !
+
+> J'aimerais commander 3 bières PunkIPAs !
+Veuillez d'abord vous identifier.
+
+> Combien coûte 1 bière PunkIPA ?
+Cela coûte CHF 3.0.
+
+> Quitter
+Adieu.
+----
+
+.Exemple d'exécution typique (avec session d'utilisateur)
+[source,text]
+----
+Bienvenue au Chill-Out !
+
+> Bonjour
+Hello John !
+
+> J'aimerais connaître mon solde.
+Le montant actuel de votre solde est de CHF 30.0.
+
+> Je veux commander 2 bières PunkIPAs et 1 bière Ténébreuse.
+Voici donc 2 punkipa et 1 tenebreuse ! Cela coûte CHF 10.0 et votre nouveau solde est de CHF 20.0.
+
+> Je voudrais commander 1 croissant.
+Voici donc 1 croissant maison ! Cela coûte CHF 2.0 et votre nouveau solde est de CHF 18.0.
+
+> Quitter
+Adieu.
+----
+
+== Indications
+
+* Ce laboratoire doit être réalisé *par groupe de 3*. Tout plagiat sera sanctionné par une note de 1.
+* La date de rendu est indiquée sur GitHub Classroom.
+* Le rendu se fait via un tag git sur votre dépôt GitHub Classroom.
+* Il n'est pas nécessaire de rendre un rapport. Un code propre et bien commenté suffit. Assurez-vous d'expliquer clairement votre implémentation.
+* Évitez la duplication de code.
+* Privilégiez les implémentations récursives des fonctions.
+* Préférez l'utilisation de `val` plutôt que `var`.
+
+=== Rendu
+
+Pour ce laboratoire, qui est la première partie d'une série utilisant le même dépôt, nous vous demandons de créer un tag sur le commit de votre rendu. Suivez les étapes ci-dessous :
+
+1. Commitez votre travail (ex. `git commit`).
+2. Créez un tag annoté nommé `rendu-parser` sur le commit actuel (ex. `git tag -a rendu-parser`). Dans le commentaire du tag, indiquez si vous avez rencontré des problèmes éventuels.
+3. Pushez le tag créé (ex. `git push origin rendu-parser`).
+4. Vérifiez dans votre navigateur que le tag est bien disponible.
+
+== Description
+
+Ce laboratoire s'inspire du fonctionnement d'un compilateur, mais de manière très simplifiée.
+Un compilateur utilise généralement un _Tokenizer_ (ou _Lexer_) pour lire et découper le code en entrée, un _Parser_ pour construire un arbre syntaxique, un _Analyzer_ pour vérifier la validité des opérations, et un _TypeChecker_ pour vérifier les types des opérations. L'arbre syntaxique contient des expressions  et des déclarations.
+
+Dans notre Bot-Tender, nous utiliserons un _Tokenizer_ pour découper les requêtes des utilisateurs en tokens, un _Parser_ pour construire l'arbre syntaxique à partir de ces tokens, et un _Analyzer_ simplifié pour déterminer les actions à effectuer en fonction des tokens analysés.
+
+=== Requêtes
+
+Il vous est demandé de gérer _au moins_ les requêtes suivantes :
+
+* Requête de commande : permet à l'utilisateur de passer une commande.
+** Exemples de saisie : `J'aimerais commander 2 bières Farmers et 1 bière Jackhammer.` ou `Je veux commander 1 bière Farmer ou 1 bière PunkIPA.` ;
+** Exemple de retour : `Voici donc 2 Farmers et 1 Jackhammer ! Cela coûte CHF 5.00 et votre nouveau solde est de CHF 25.0.`
+* Requête de prix : permet à l'utilisateur de demander le prix d'un produit donné.
+** Exemples de saisie : `Quel est le prix de 2 bières Boxers ?` ou `Combien coûtent 4 bières Farmers et 6 croissants ?`;
+** Exemple de retour : `Cela coûte CHF 2.0.`
+* Requête de solde : permet à l'utilisateur de connaître le montant de son solde courant.
+** Exemple de saisie : `J'aimerais connaître mon solde.`;
+** Exemple de retour : `Le montant actuel de votre solde est de CHF 25.0.`
+
+Les requêtes de _commande_ et de _solde_ nécessitent que l'utilisateur soit authentifié. Dans cette application, un utilisateur est authentifié si la session contient un nom d'utilisateur. Pour l'instant, la méthode qui permet d'attribuer l'utilisateur courrant est commenté dans le code. Dans le prochain labo, vous allez implémenter le changement dynamique de l'utilisateur actuel. 
+
+Les retours affichés en console peuvent différer des exemples donnés ci-dessus, tant qu'ils restent clairs et explicites pour l'utilisateur.
+
+Vous trouverez de plus dans le code de base un exemple fonctionnel de parser le bonjour d'un utilisateur.
+
+==== Grammaire
+
+Voici la grammaire complète des requêtes que vous allez implémenter :
+
+-----
+Nombre := `nombre entier`
+Produit := "croissant" | "bière"
+Marque := "maison" | "cailler" | "farmer" | "boxer" | "wittekop" | "punkipa" | "jackhammer" | "ténébreuse"
+Politesse := "je" ("aimerais" | "veux" | "voudrais")
+Produits := Nombre Produit [Marque] {("et" | "ou") Nombre Produit [Marque]}
+Commande := Politesse "commander" Produits
+Solde := Politesse "connaître" "mon" "solde"
+Prix := ("combien" ("coûte" | "coûtent")) | ("quel" "est" "le" "prix" "de") Produits
+Phrase := "bonjour" | (["bonjour"] (Commande | Solde | Prix))
+-----
+
+La figure ci-dessous représente la grammaire factorisée.
+
+.Diagramme de la syntaxe des tokens
+image::images/syntax_diagram.svg[Diagramme de la syntaxe des tokens]
+
+==== Gestion des "et" et "ou"
+
+Dans le cadre de ce labo, lorsque nous avons affaire à un "ou" dans une phrase, la logique utilisée sera de toujours retourner l'option dont le prix est le moins élevé. Ainsi, lorsqu'un utilisateur commande ou demande par exemple le prix de "2 Boxers ou 4 Ténébreuses", l'application choisira la première option car c'est la moins chère, à savoir les Boxers.
+
+Les séquences de `ET` et `OU` ont une associativité à gauche. Voici un exemple d'interprétation d'une séquence `ET`/`OU` pour calculer le prix d'une commande:
+
+----
+punkipa et boxer  ou farmer ou tenebreuse  et boxer => 3 et 1 ou 1 ou 4 et 1
+(punkipa + boxer) ou farmer ou tenebreuse  et boxer => (  4 ) ou 1 ou 4 et 1
+(          farmer         ) ou tenebreuse) et boxer => (    1    ) ou 4 et 1
+(                   farmer               ) et boxer => (       1      ) et 1
+(                    farmer + boxer               ) => (         2         )
+----
+
+==== Extension de la grammaire
+
+Si vous le souhaitez, vous pouvez implémenter une grammaire plus complète. Dans ce cas :
+
+* Votre grammaire doit être un sur-ensemble de la grammaire fournie.
+* Vous devez fournir une documentation de la nouvelle grammaire.
+
+=== Structure
+
+Voici un bref résumé des différents fichiers fournis pour cette première partie :
+
+* link:src/main/scala/MainParser.scala[`MainParser.scala`] : point d’entrée du programme. Il lit les entrées utilisateur, les tokenize, les envoie au Parser puis à l’Analyzer et affiche les résultats.
+* link:src/main/scala/Chat[`Chat/`]
+** link:src/main/scala/Chat/Token.scala[`Tokens.scala`] : définit les tokens du programme et le type Token (un enum). Un token représente un mot valide par rapport au dictionnaire.
+** link:src/main/scala/Chat/TokenizerService.scala[`TokenizerService.scala`] : reçoit une entrée utilisateur, normalise les mots de la phrase et les convertit en tokens.
+** link:src/main/scala/Chat/Tree.scala[`Tree.scala`] : définit les nœuds et les feuilles de l'arbre syntaxique.
+** link:src/main/scala/Chat/AnalyzerService.scala[`AnalyzerService.scala`] : contient la logique de l'application et retourne la réponse appropriée selon le nœud ou la feuille fourni.
+** link:src/main/scala/Chat/Parser.scala[`Parser.scala`] : traite les tokens par ordre d'apparition et construit un arbre syntaxique pour traiter les requêtes à l'aide de `Tree.scala`.
+* link:src/main/scala/Data[`Data`] (ce package contient des fichiers liés aux données de l'application, car nous n'utilisons pas de base de données dans cette partie du laboratoire)
+** link:src/main/scala/Data/ProductService.scala[`ProductService.scala`] : contient la liste des produits disponibles, leurs types/marques et leurs prix. Chaque produit possède un type/marque par défaut.
+** link:src/main/scala/Data/AccountService.scala[`AccountService.scala`] : contient la liste des utilisateurs enregistrés dans l'application et leurs soldes courants.
+** link:src/main/scala/Data/SessionService.scala[`SessionService.scala`] : permet de connaître l'utilisateur actuellement connecté (s'il y en a un). Dans ce labo, il n'y a qu'une seule session par exécution. Dans un prochain labo, il sera possible d'avoir plusieurs sessions par exécution.
+* link:src/main/scala/Utils[`Utils/`]
+** link:src/main/scala/Utils/Dictionary.scala[`Dictionary.scala`] : contient le dictionnaire de l'application, utilisé pour valider et normaliser les mots entrés par l'utilisateur. Il s'agit d'un objet de type Map avec des mots valides comme clés et leurs équivalents normalisés comme valeurs (par exemple, "veux" et "aimerais" sont normalisés en "vouloir").
+
+Un exemple de fichier de test est également fourni (link:src/test/scala/BotTenderParserInputSuite.scala[`BotTenderParserInputSuite.scala`]). Il permet de déboguer vos différentes entrées. C'est particulièrement utile car l'exécution en mode debug avec VS Code ne permet pas les entrées utilisateur.
+
+== Implémentation
+
+=== 1. Tokenizer
+
+Le but du Tokenizer est de découper une phrase en mots, de les normaliser, puis de les convertir en tokens pour que le programme puisse les interpréter. Le programme ne peut interpréter que les tokens définis.
+
+Dans un vrai compilateur, la tokenisation est un processus de bas niveau qui lit les caractères un par un jusqu'à rencontrer un espace ou un caractère de fin (EOF/EOL). Voici un exemple concret :
+
+1. L'utilisateur entre la phrase "bonjour je veux 2 bières".
+2. La fonction `nextToken()` est appelée par le programme.
+3. Le Tokenizer lit les caractères jusqu'à un espace ou un EOL, puis retourne le token "bonjour".
+4. Le programme interprète le token "bonjour" et agit en conséquence.
+5. La fonction `nextToken()` est appelée à nouveau pour lire le token suivant "je", et ainsi de suite jusqu'à la fin de la phrase.
+
+Cette méthode optimise le processus en évitant de surcharger la mémoire. Dans notre cas, les entrées sont courtes, donc nous utilisons une approche plus simple en séparant directement la phrase avec `split(...)` pour stocker les tokens dans une liste. La méthode `nextToken()` est alors un itérateur qui retourne le token suivant dans la liste jusqu'à la fin (EOL).
+
+La classe `TokenizerService` contient une méthode à implémenter :
+
+`TokenizerService.tokenize` est appelée par le `MainParser` et retourne un itérateur. Voici quelques conseils :
+
+* Éliminez rapidement les caractères de ponctuation (`.`, `,`, `!`, `?`, `*`) et remplacez les apostrophes et espaces multiples par des espaces simples.
+* Recherchez les mots dans le dictionnaire pour récupérer leurs équivalents normalisés et les tokeniser. Si un mot n'existe pas dans le dictionnaire et n'est pas un nombre, retournez le token `UNKNOWN`.
+* Chaque token sera retourné sous la forme d'un tuple `(String, Token)` où `Token` est un enum défini dans `Tokens.scala` et `String` est le mot normalisé. Par exemple, `("28", NUM)` pour le nombre 28.
+* La conversion d'un mot en token se fera à l'aide de conditions. En pseudo-code :
+** Si le mot actuel vaut "hello", alors retourne le tuple `("bonjour", Token.BONJOUR)`
+** Si le mot actuel vaut "veux", alors retourne le tuple `("vouloir", Token.VOULOIR)`
+** Si le mot actuel vaut "7", alors retourne le tuple `("7", Token.NUM)`
+** ...
+
+Il est tout à fait possible d'ajouter des méthodes à la classe si vous le jugez nécessaire et/ou plus propre.
+
+*N'oubliez pas d'ajouter tous les mots du dictionnaire et les tokens nécessaires pour tokenizer les requêtes !*
+
+.Exemples de tokenisation
+[cols="1,1"]
+|===
+a|
+.Tokenisation d'une simple commande
+[source,text]
+----
+Je veux commander 12 bières et 4 croissants.
+(je,JE)
+(vouloir,VOULOIR)
+(commander,COMMANDER)
+(12,NUM)
+(biere,PRODUCT)
+(et,ET)
+(4,NUM)
+(croissant,PRODUCT)
+(EOL,EOL)
+----
+
+a|
+.Normalisation du terme "aimerais" en "vouloir"
+[source,text]
+----
+J'aimerais commander 2 bières !
+(je,JE)
+(vouloir,VOULOIR)
+(commander,COMMANDER)
+(2,NUM)
+(biere,PRODUCT)
+(EOL,EOL)
+----
+|===
+
+=== 2. Data
+
+Le but de cette étape est de modéliser et d'implémenter les données de l'application, situées dans le package `Data` :
+
+* `ProductService.scala` : cette implémentation doit contenir un attribut permettant d'accéder à la liste des produits, leurs types/marques, et leurs prix de manière optimisée. Vous devez également gérer les types/marques par défaut. Voici les produits à gérer obligatoirement :
+** Bières :
+*** Boxer (_par défaut_) : CHF 1.00
+*** Farmer : CHF 1.00
+*** Wittekop : CHF 2.00
+*** PunkIPA : CHF 3.00
+*** Jackhammer : CHF 3.00
+*** Ténébreuse : CHF 4.00
+** Croissants :
+*** Maison (_par défaut_) : CHF 2.00
+*** Cailler : CHF 2.00
+* `AccountService.scala` : cette implémentation doit permettre de gérer les comptes utilisateurs et leurs soldes. Vous devez implémenter :
+1. Un attribut `accounts` contenant la liste des utilisateurs connectés durant l'instance actuelle de l'application, avec un solde initial de CHF 30.00.
+2. La méthode `purchase` qui soustrait un montant donné du compte d'un utilisateur. Les soldes négatifs ne sont pas permis.
+
+=== 3. Arbre de syntaxe
+
+Le but de l'arbre syntaxique est de représenter l'objectif de la requête sous forme de structure de données.
+
+Le fichier link:src/main/scala/Chat/Tree.scala[`Tree.scala`] contiendra les différents nœuds et feuilles de l'arbre syntaxique construit par le Parser. En vous basant sur l'implémentation de la salutation fournie dans ce fichier, ajoutez les nœuds manquants. Voici quelques types de nœuds que vous pourriez implémenter : un nœud pour chaque type de requête (solde, commande, etc.), un nœud "et" et un nœud "ou" (pour les requêtes de produits multiples), et un nœud représentant un produit avec son type/marque.
+
+Notez que certains nœuds peuvent avoir des valeurs et/ou des enfants.
+
+=== 4. Parser
+
+Le but du Parser est de construire un arbre syntaxique à partir d'une suite de tokens.
+
+Pour commencer, examinez et comprenez le contenu du fichier link:src/main/scala/Chat/Parser.scala[`Parser.scala`]. Cette classe est responsable de "consommer" les tokens (c'est-à-dire, lire un token, le traiter, et passer au token suivant) dans l'ordre donné, puis de créer les nœuds appropriés de l'arbre syntaxique (défini dans le fichier `Tree.scala`). Une instance de cette classe est appelée depuis le Main, et le parsing est effectué grâce à sa méthode `parsePhrase`. L'objet `ExprTree` retourné est ensuite passé à la méthode `reply` de l'analyzer.
+
+Une fois l'exemple étudié et compris, complétez le reste de ce fichier, puis testez votre application. Prêtez une attention particulière à la factorisation de votre code à cette étape, en le séparant notamment en fonctions.
+
+=== 5. Analyzer
+
+Le but de l'Analyzer est d'évaluer les actions à prendre en fonction de l'arbre syntaxique.
+
+Vous trouverez dans le code de base un exemple fonctionnel de réaction au bonjour d'un utilisateur.
+
+Le fichier `AnalyzerService.scala` contient la logique de l'application (calculs, etc.). La classe `AnalyzerService` contient une méthode `reply` qui retourne le texte de sortie à afficher en console selon le nœud. La méthode retournera une chaîne de caractères et appellera ou non une méthode pour calculer le prix selon le type du nœud traité.
+
+Pour rappel, la session (dont l'implémentation vous est fournie dans le fichier `SessionService.scala`) permet de spécifier quel utilisateur est actuellement connecté.

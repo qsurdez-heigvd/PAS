@@ -1,0 +1,68 @@
+= Labo TestSuites
+Nastaran FATEMI <nastaran.fatemi@heig-vd.ch>; Christopher MEIER <christopher.meier@heig-vd.ch>
+:lang: fr
+:toc: auto
+:toc-title: Table des matières
+
+== Introduction
+
+Le but de ce labo est d'exercer les bases de Scala en mettant en place des tests pour vérifier l'exécution correcte des séries d'exercice B, C et D.
+
+Lors de la correction, toutes les variantes d'implémentation seront testées par les suites de test de tous les groupes.
+
+On vous encourage à écrire plusieurs variantes d'implémentations pour chaque exercice et à placer celle qui vous paraît la meilleure (la plus juste) en premier.
+
+== Framework de test
+
+Le framework de test utilisé dans ce labo est link:https://scalameta.org/munit/[munit]:
+
+* il permet de créer des classes qui correspondent à des suites de tests. Chaque test est décrit et défini dans une méthode ``test(description){ definition }`` dans la classe.
+* il permet de faire des assertions afin de décrire le comportement voulu d'un code. Si une assertion d'égalité ne correspond pas, alors un diff entre le résultat souhaité et le résultat obtenu est affiché.
+* il a une intégration avec link:https://scalacheck.org/[scalacheck] qui permet d'écrire des tests avec des entrées générées aléatoirement en suivant une propriété donnée (par exemple, le type).
+
+== Explication de la structure
+
+``src/main/scala/labTestSuites``::
+    link:src/main/scala/labTestSuites/exercices.scala[``exercices.scala``]::: Contient les traits (équivalent de l'interface en Java) qui définissent ce qu'il faut implémenter pour chaque exercice.
+    link:src/main/scala/labTestSuites/implementations/template.scala[``implementations/template.scala``]::: Contient, pour chaque exercice, *vos implémentations à compléter*.
+    link:src/main/scala/labTestSuites/all.scala[``all.scala``]::: Contient une fonction qui centralise toutes les implémentations qui vont être utilisées dans les tests (seule la première implémentation d'un exercice dans la liste va être testée)footnote:[Le programme est structuré de cette manière afin de pouvoir parametriser les suites de tests]. *Si vous voulez tester une implémentation spécifique*, il faut s'assurer qu'elle soit la première dans la séquence ``correct`` de l'exercice avant de lancer la suite de test associée.
+``src/test/scala``::
+link:src/test/scala/implementations/template.scala[``implementations/template.scala``]::: Contient, pour chaque exercice, *les suites de test à compléter*
+link:src/test/scala/suite.scala[``suite.scala``]::: Contient la configuration partagée des suites de test.
+
+
+== Étapes
+
+=== Implémenter la version correcte des exercices
+
+Dans le fichier link:src/main/scala/labTestSuites/implementations/template.scala[]. 
+
+Pour tous les objets qui étendent le trait ``Implementations``, implémenter ``val correct`` en suivant la donnée de l'exercice correspondant (par exemple: l'objet ``B1`` correspond à l'exercice 1 de la série B).
+
+[NOTE]
+Il est possible de fournir plusieurs implémentations correctes. Il n'y a pas de pénalité si les implémentations dans ``correct.tail`` ont des erreurs.
+
+
+=== Implémenter des suites de tests pour chacun des exercices
+
+Dans le fichier link:src/test/scala/template.scala[].
+
+Ajouter des tests pour chaque exercice en suivant la structure fournie.
+
+* Les tests doivent inclure les cas limites (_edge cases_) et quelques vérifications de fonctionnement attendu
+* Essayer de mettre en place des tests intéressants/avancés
+
+[NOTE]
+====
+* Ne reimplémenter pas vos solutions dans les tests. En particulier, pour les tests de propriétés
+* Un bon test est simple, précis et minimal. Il devrait tester uniquement une chose.
+* Pour la correction, le label du test va indiquer si vous avez pensez à un cas particulier (pas le contenu du code). Le code doit correspondre au label.
+====
+
+=== Renommer les fichiers et package
+
+Afin de faciliter la correction par l'assistant, on vous demande de renommer les fichiers et packages suivants en remplaçant ``template`` par le nom de votre groupe (par exemple `fatemi_meier`):
+
+* Le fichier link:src/main/scala/labTestSuites/implementations/template.scala[] et son package (situé à la link:src/main/scala/labTestSuites/implementations/template.scala#L2[ligne 2])
+* Le package à la link:src/main/scala/labTestSuites/all.scala#L9[ligne 9] du fichier link:src/main/scala/labTestSuites/all.scala[]
+* Le fichier link:src/test/scala/implementations/template.scala[] et son package (situé à la link:src/test/scala/implementations/template.scala#L2[ligne 2])

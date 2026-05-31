@@ -1,0 +1,122 @@
+$colormode = 0x2e3338
+#$colormode = 0xdcddde
+color = $colormode
+$r = 0.2in
+linerad = 0.75*$r
+linewid = 0.25
+
+#
+# MAIN
+# ==================================
+
+# Start and end blocks MAIN
+#
+dot rad 250% color $colormode
+X0: last.e + (0.3,0)
+arrow from last dot to X0
+move right 6.6in
+box wid 5% ht 25% fill $colormode
+X9: last.w - (0.3,0)
+arrow from X9 to last box.w
+
+
+# BONJOUR
+arrow right 2*$r from X0
+oval " BONJOUR " fit
+B1: last.end
+line right $r then down 1.25*$r then right $r
+X1: last.end
+move to B1
+arrow right until even with X9 - ($r, 0) then up until even with X9 then right $r
+
+# QUEL
+line right $r from X0 then down 1.25*$r then right until even with X1
+arrow right 2*$r
+oval " QUEL " fit
+arrow right $r
+oval " ETRE " fit
+arrow right $r
+oval " LE " fit
+arrow right $r
+oval " PRIX " fit
+arrow right $r
+oval " DE " fit
+arrow right 2*$r
+X5: last.end
+box "command" bold fit
+arrow right until even with X9 - ($r, 0) then up until even with X9 then right $r
+
+# COMBIEN
+arrow right $r from X1 then down 1.25*$r then right $r
+oval " COMBIEN " fit
+arrow right $r
+oval " COUTER " fit
+arrow right until even with X5 - ($r, 0) then up until even with X5 then right $r
+
+# JE
+arrow right $r from X1 then down 2*1.25*$r then right $r
+oval " JE " fit
+X2: last.e
+arrow right $r
+oval " VOULOIR " fit
+X4: last.e
+arrow right 2*$r
+oval " COMMANDER " fit
+arrow right until even with X5 - ($r, 0) then up until even with X5 then right $r
+
+
+arrow right $r from X4 then down 1*1.25*$r then right $r
+oval " CONNAITRE " fit
+arrow right $r
+oval " MON " fit
+arrow right $r
+oval " SOLDE " fit
+MAINBOTTOM: last.south
+arrow right until even with X9 - ($r, 0) then up until even with X9 then right $r
+
+
+#
+# COMMAND
+# ==================================
+
+# Start and end blocks COMMAND
+#
+move to (0, MAINBOTTOM.y - $r)
+box "command" bold fit
+line down 50% from last box.sw
+dot rad 250% color $colormode
+X0: last.e + (0.3,0)
+arrow from last dot to X0
+move right 6.6in
+box wid 5% ht 25% fill $colormode
+X9: last.w - (0.3,0)
+arrow from X9 to last box.w
+
+
+# The main rule that goes straight through from start to finish
+arrow from X0 right $r
+oval " NUM " fit
+arrow right $r
+oval " PRODUIT " fit
+X1: last.end
+arrow right until even with X9
+
+
+arrow right $r from X1 then down 1.25*$r then right $r
+oval " MARQUE " fit
+arrow right $r then up until even with X9 then right $r
+X2: last.end
+
+arrow right $r from X2 then down 1.25*$r then right $r
+oval " ET " fit
+line right 2*$r
+X3: last.end
+arrow right $r
+box "command" bold fit
+line right $r \
+  then up until even with X9 then right $r
+
+arrow right $r from X2 then down 2*1.25*$r then right $r
+oval " OU " fit
+line right $r \
+  then up until even with X3 then right $r

@@ -1,0 +1,155 @@
+package Web
+
+import Data.MessageService.Username
+import Data.Session
+import scalatags.Text.all.*
+import scalatags.Text.tags2
+
+object Layouts:
+  type NavbarItem = (String, String)
+  val botName: String = "Bot-tender"
+
+  // ─── Nav ──────────────────────────────────────────────────────────────────
+
+  object Nav:
+  val messageBoardItem: NavbarItem = ("Go to the message board", "/")
+  val loginItem: NavbarItem        = ("Log in", "/login")
+  val logoutItem: NavbarItem       = ("Log out", "/logout")
+
+  def apply(session: Session): Tag =
+    session.getCurrentUser
+      .map(u => apply((s"Hello $u!", ""), logoutItem))
+      .getOrElse(apply(loginItem))
+
+  def apply(first: NavbarItem, rest: NavbarItem*): Tag =
+    build(first +: rest)
+
+  private def build(items: Seq[NavbarItem]): Tag =
+    tags2.nav(
+      a(cls := "nav-brand", botName),
+      items.map { (lbl, link) =>
+        div(
+          cls := "nav-item",
+          if link.isEmpty then span(lbl) else a(lbl, href := link),
+        )
+      },
+    )
+  end Nav
+
+  // ─── Board ────────────────────────────────────────────────────────────────
+
+  object Board:
+  val loading: Tag = p("Please wait, the messages are loading...", style := "text-align: center;")
+  val empty: Tag   = p("No messages have been sent yet", style := "text-align: center;")
+
+  def container(content: Modifier*): Tag =
+    div(id := "boardMessage", content)
+
+  def entry(
+             text: String,
+             author: Username,
+             mention: Option[Username] = None,
+           ): Frag =
+    div(
+      cls := "msg",
+      span(author, cls := "author"),
+      span(
+        cls := "msg-content",
+        mention.map(m => span(s"@$m ", cls := "mention")),
+        text,
+      ),
+    )
+  end Board
+
+  // ─── Forms ────────────────────────────────────────────────────────────────
+
+  object Forms:
+  def section(title: String, content: Modifier*): Tag =
+    div(h2(title), content)
+
+  def sendMessage(errorContent: Modifier*): Tag =
+    inputForm(
+      labelText = "Your message:",
+      placeholderText = "Write your message",
+      inputMods = Seq(name := "message"),
+      errorContent = errorContent.toSeq,
+      formMods = Seq(onsubmit := "submitMessageForm(); return false"),
+    )
+
+  def username(errorContent: Modifier*): Tag =
+    inputForm(
+      labelText = "Username:",
+      placeholderText = "Enter your username",
+      inputMods = Seq(name := "username"),
+      errorContent = errorContent.toSeq,
+      formMods = Seq(method := "post"),
+    )
+
+  private def inputForm(
+                         labelText: String,
+                         placeholderText: String,
+                         inputMods: Seq[Modifier] = Nil,
+                         errorContent: Seq[Modifier] = Nil,
+                         formMods: Seq[Modifier] = Nil,
+                       ): Tag =
+    form(
+      formMods,
+      div(id := "errorDiv", cls := "errorMsg", errorContent),
+      label(`for` := "messageInput", labelText),
+      input(
+        id := "messageInput",
+        `type` := "text",
+        placeholder := placeholderText,
+        required,
+        inputMods,
+      ),
+      input(`type` := "submit", value := "Send"),
+    )
+  end Forms
+
+  // ─── Pages ────────────────────────────────────────────────────────────────
+
+  object Pages:
+  private val cssStylesheets = Seq(
+    link(rel := "stylesheet", href := s"${StaticRoutes.CSS_URL_PREFIX}/main.css"),
+  )
+  private val jsScripts = Seq(s"${StaticRoutes.JS_URL_PREFIX}/main.js")
+
+  def page(
+            pageHeader: Tag,
+            scripts: Seq[String] = Nil,
+          )(pageContent: Frag*): doctype =
+    doctype("html"):
+      html(
+    head(
+      meta(charset := "utf-8"),
+      meta(name := "viewport", content := "width=device-width, initial-scale=1"),
+      tags2.title(botName),
+      cssStylesheets,
+    ),
+    body(
+      pageHeader,
+      div(cls := "content", pageContent),
+      scripts.map(js => script(src := js)),
+    ),
+  )
+
+  def home(session: Session): doctype =
+    page(Nav(session), jsScripts)(
+      Board.container(Board.loading),
+      Forms.sendMessage(),
+    )
+
+  def login(loginError: String = "", registerError: String = ""): doctype =
+    page(Nav(Nav.messageBoardItem))(
+      Forms.section("Login", Forms.username(loginError)(action := "/login")),
+      Forms.section("Register", Forms.username(registerError)(action := "/register")),
+    )
+
+  def actionSuccess(headerItems: NavbarItem*)(message: String): doctype =
+    page(Nav(Nav.messageBoardItem, headerItems*))(
+      p(message),
+    )
+  end Pages
+
+  end Layouts
